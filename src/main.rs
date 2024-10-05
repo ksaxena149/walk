@@ -4,7 +4,7 @@ mod executor;
 
 fn main() {
     if let Err(e) = run() {
-        eprintln!("Error:\n{}", e);
+        eprintln!("{}", e);
     }
 }
 
