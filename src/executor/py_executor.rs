@@ -1,8 +1,8 @@
 use std::process::{Command, Stdio};
 
-pub fn execute_py(filename: String, file_stem: &str) -> Result<(), String> {
+pub fn execute_py(file_stem: &str) -> Result<(), String> {
     let output = Command::new("python")
-        .arg(filename)
+        .arg(format!("{}.py", file_stem))
         .stdin(Stdio::inherit())
         .stdout(Stdio::inherit())
         .stderr(Stdio::inherit())

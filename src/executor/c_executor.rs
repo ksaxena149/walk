@@ -1,9 +1,9 @@
 use std::process::{Command, Stdio};
 
-pub fn execute_c(filename: String, file_stem: &str) -> Result<(), String> {
+pub fn execute_c(file_stem: &str) -> Result<(), String> {
     // compile C program
     let output = Command::new("gcc")
-        .args(&[&filename, "-o", &format!("{}.exe", file_stem)])
+        .args(&[&format!("{}.c", file_stem), "-o", &format!("{}.exe", file_stem)])
         .output()
         .map_err(|e| format!("Failed to execute gcc: {}", e))?;
     if !output.status.success() {

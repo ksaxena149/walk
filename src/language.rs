@@ -6,26 +6,18 @@ pub fn execute_program(filename: &str) -> Result<(), String> {
         .extension()
         .and_then(|ext| ext.to_str())
         .unwrap_or("unknown");
+    let file_stem = Path::new(&filename)
+        .file_stem()
+        .and_then(|stem| stem.to_str())
+        .unwrap_or("unknown");
     match lang {
         "c" => {
-            let file_stem = Path::new(&filename)
-                .file_stem()
-                .and_then(|stem| stem.to_str())
-                .unwrap_or("unknown");
-            executor::c_executor::execute_c(filename.to_string(), file_stem)?;
+            executor::c_executor::execute_c(file_stem)?;
         }
         "py" => {
-            let file_stem: &str = Path::new(&filename)
-                .file_stem()
-                .and_then(|stem| stem.to_str())
-                .unwrap_or("unknown");
-            executor::py_executor::execute_py(filename.to_string(), file_stem)?;
+            executor::py_executor::execute_py(file_stem)?;
         }
         "cpp" => {
-            let file_stem = Path::new(&filename)
-                .file_stem()
-                .and_then(|stem| stem.to_str())
-                .unwrap_or("unknown");
             executor::cpp_executor::execute_cpp(file_stem)?;
         }
         _ => {
