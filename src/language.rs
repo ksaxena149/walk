@@ -21,6 +21,13 @@ pub fn execute_program(filename: &str) -> Result<(), String> {
                 .unwrap_or("unknown");
             executor::py_executor::execute_py(filename.to_string(), file_stem)?;
         }
+        "cpp" => {
+            let file_stem = Path::new(&filename)
+                .file_stem()
+                .and_then(|stem| stem.to_str())
+                .unwrap_or("unknown");
+            executor::cpp_executor::execute_cpp(file_stem)?;
+        }
         _ => {
             return Err("Language not supported.".to_string())
         }
