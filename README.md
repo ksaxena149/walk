@@ -22,7 +22,7 @@ You can install **Walk** in two ways:
 
 #### 1. Download the Executable from Releases (Windows Only)
 
-1. Go to the [Releases](https://github.com/your-username/walk/releases) page.
+1. Go to the [Releases](https://github.com/ksaxena149/walk/releases) page.
 2. Download the appropriate executable for your operating system. (Currently supports only windows, build from source if on other OS)
 3. Add the executable to your system path.
 
