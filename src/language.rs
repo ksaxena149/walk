@@ -20,6 +20,9 @@ pub fn execute_program(filename: &str) -> Result<(), String> {
         "cpp" => {
             executor::cpp_executor::execute_cpp(file_stem)?;
         }
+        "java" => {
+            executor::java_executor::execute_java(file_stem)?;
+        }
         _ => {
             return Err("Language not supported.".to_string())
         }
